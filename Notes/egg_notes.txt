@@ -1,6 +1,7 @@
 android Toast object - notifier but must call .show()
 
-ListView.FixedViewInfo - header/footer... constant reminder of "who" made it
+ListView - must have "android:layout_gravity" attribute
+	ListView.FixedViewInfo - header/footer... constant reminder of "who" made it
 
 ProgressBar - indicator displayed as saving
 
@@ -13,4 +14,33 @@ Scroller/ScrollView
 
 Slide between views rather than completely new page?
 
-TabWidget
+ActionBar
+	ActionBar.Tab
+	ActionBar.TabListener
+	OR TabWidget - maintain info in fields between swiping/clicking tab
+	
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+		    ...
+		
+		    // Create a tab listener that is called when the user changes tabs.
+		    ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+		        public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+		            // When the tab is selected, switch to the
+		            // corresponding page in the ViewPager.
+		            mViewPager.setCurrentItem(tab.getPosition());
+		        }
+		        ...
+		    };
+		}
+
+VideoView - show user how to use app
+	-perhaps it plays as soon as it's opened the first time and then delete it?
+
+ViewPager
+	ViewPager.OnPageChangeListener 
+	 	-interface to change the current tab each time the page changes
+	ViewAnimator/ViewSwitcher/ViewFlipper
+
+PagerTitleStrip - instead of ActionBar w/Tabs
+

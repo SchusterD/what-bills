@@ -29,5 +29,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void onOpen(SQLiteDatabase db){
+		
+	}
 
 }
