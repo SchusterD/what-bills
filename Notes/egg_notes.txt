@@ -1,0 +1,16 @@
+android Toast object - notifier but must call .show()
+
+ListView.FixedViewInfo - header/footer... constant reminder of "who" made it
+
+ProgressBar - indicator displayed as saving
+
+CheckBox/RadioButton
+
+RelativeLayout
+	RelativeLayout.LayoutParams
+	
+Scroller/ScrollView
+
+Slide between views rather than completely new page?
+
+TabWidget

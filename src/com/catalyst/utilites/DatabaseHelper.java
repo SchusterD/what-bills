@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DatabaseHandler extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 	//constants
 	private static final int DB_VERSION = 1;
 	private static final String DB_NAME = "TBD";
 	
 
-	public DatabaseHandler(Context context) {
+	public DatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 		// TODO Auto-generated constructor stub
 		
