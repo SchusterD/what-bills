@@ -3,8 +3,21 @@
 
     <string name="app_name">WhatBills</string>
     <string name="action_settings">Settings</string>
-    <string name="welcome_message">Welcome to Bill Reminder App</string>
     <string name="title_activity_add_bill">AddBillActivity</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_message">Welcome to Bill Reminder App</string>
+    <string name="addButton">Add Bill</string>
+	<string name="viewButton">View Bill</string>
+	
+	<!-- Nav Drawer Menu Items -->
+	<string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Add Bill</item>
+        <item >View Bills</item>
+    </string-array>
 
 </resources>
