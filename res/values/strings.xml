@@ -4,5 +4,7 @@
     <string name="app_name">WhatBills</string>
     <string name="action_settings">Settings</string>
     <string name="welcome_message">Welcome to Bill Reminder App</string>
+    <string name="title_activity_add_bill">AddBillActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
