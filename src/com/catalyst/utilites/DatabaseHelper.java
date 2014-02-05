@@ -98,8 +98,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		try {
 			cursor = db.rawQuery(DatabaseScripts.addBill, null);
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			Log.w("Error cadding bill", e);
+		}
+		finally{
+			db.close();
 		}
 	}
 	
@@ -109,8 +113,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		try {
 			cursor = db.rawQuery(DatabaseScripts.editBill, null);
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			Log.w("Error editing bill", e);
+		}
+		finally{
+			db.close();
 		}
 	}
 	
@@ -124,19 +132,56 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		catch(SQLException e){
 			Log.w("Error removing bill", e);
 		}
+		finally{
+			db.close();
+		}
 	}
 	
 	public void getAllBills(){
 		SQLiteDatabase db = getReadableDatabase();
+		
+		try{
+			cursor = db.rawQuery(DatabaseScripts.getAllBills, null);
+		}
+		catch(SQLException e){
+			Log.w("Error getting all bills", e);
+		}
+		finally{
+			db.close();
+		}
+		
+		if(cursor != null && cursor.moveToFirst()){
+			
+		}
 	}
 	
 	public void getOneBill(){
 		SQLiteDatabase db = getReadableDatabase();
 		ContentValues content = new ContentValues();
+		
+		try{
+			db.rawQuery(DatabaseScripts.getOneBill, null);
+		}
+		catch(SQLException e){
+			Log.w("Error getting one bill", e);
+		}
+		finally{
+			db.close();
+		}
 	}
 	
 	public void removeAllBills(){
 		SQLiteDatabase db = getWritableDatabase();
+		
+		try{
+			db.rawQuery(DatabaseScripts.removeAllBills, null);
+		}
+		catch(SQLException e){
+			Log.w("Error removing all bills", e);
+		}
+		finally{
+			db.close();
+		}
 	}
 
 }
