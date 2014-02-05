@@ -1,4 +1,6 @@
-package com.catalyst.whatbills;
+package com.catalyst.whatbills.activities;
+
+import com.catalyst.whatbills.R;
 
 import android.os.Bundle;
 import android.app.Activity;

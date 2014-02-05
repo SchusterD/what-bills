@@ -130,12 +130,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 	}
 	
-	public void editBill(){
+	public void editBill(Bill b){
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues content = new ContentValues();
 		
+		//update anything different 
+		//go in with id
+		
 		try {
-			cursor = db.update(DatabaseScripts.editBill, null);
+			db.update(BILL_TABLE, content, "bill_id=?", 
+					new String[] { String.valueOf(b.getId()) });
 		} 
 		catch (SQLException e) {
 			Log.w("Error editing bill", e);

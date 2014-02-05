@@ -12,5 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_message" />
+    
+    <Button
+        android:id="@+id/addBillButton"
+        android:onClick="goToAddBill"
+        android:layout_width="@dimen/addBillButton_width"
+        android:layout_height="@dimen/addBillButton_height"
+        android:layout_alignParentBottom="true"
+        
+        android:text="@string/addBillButtonText"
+        />
 
 </RelativeLayout>

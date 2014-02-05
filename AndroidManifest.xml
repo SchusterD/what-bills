@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.catalyst.whatbills.MainActivity"
+            android:name="com.catalyst.whatbills.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.catalyst.whatbills.AddBillActivity"
+            android:name="com.catalyst.whatbills.activities.AddBillActivity"
             android:label="@string/title_activity_add_bill" >
         </activity>
     </application>

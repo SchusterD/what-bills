@@ -6,5 +6,5 @@
     <string name="welcome_message">Welcome to Bill Reminder App</string>
     <string name="title_activity_add_bill">AddBillActivity</string>
     <string name="hello_world">Hello world!</string>
-
+	<string name="addBillButtonText">Add a Bill</string>
 </resources>
