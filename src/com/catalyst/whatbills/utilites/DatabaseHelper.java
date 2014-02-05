@@ -1,6 +1,7 @@
 package com.catalyst.whatbills.utilites;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.catalyst.whatbills.entities.Bill;
@@ -17,7 +18,16 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
 	//constants
 	private static final int DB_VERSION = 1;
-	private static final String DB_NAME = "TBD";
+	private static final String DB_NAME = "whatbills";
+	private static final String BILL_TABLE = "bills";
+	//table info
+	private static final String BILL_ID = "bill_id";
+	private static final String BILL_NAME = "bill_name";
+	private static final String BILL_AMOUNT = "bill_amount";
+	private static final String BILL_CATEGORY = "bill_category";
+	private static final String BILL_RECURRENCE = "bill_recurrence";
+	private static final String BILL_DUEDATE = "bill_duedate";
+	
 	
 	private static DatabaseHelper database;
 	private Context context;
@@ -41,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		//create db and its tables
 		try{
-			db.execSQL(DatabaseScripts.createDatabase);
+			db.execSQL(DatabaseScripts.createTables);
 			
 			//TODO may need additional statements once we
 			//decide what should be in the db
@@ -94,17 +104,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		//is this needed?
 	}
 	
-	public void addBill(){
+	public void addBill(Bill b){
 		//do we want to check db to see if duplicate first 
 		//or just make user delete manually
 		SQLiteDatabase db = getWritableDatabase();
 		ContentValues content = new ContentValues();
 		
 		try {
-			cursor = db.rawQuery(DatabaseScripts.addBill, null);
+			String date = Long.toString(b.getDate().getTime());
+			
+			content.put(BILL_NAME, b.getName());
+			content.put(BILL_AMOUNT, b.getAmount());
+			content.put(BILL_CATEGORY, b.getCategory());
+			content.put(BILL_DUEDATE, date);
+			content.put(BILL_RECURRENCE, b.getRecurrence());
+			content.put(BILL_ID, b.getId());
+			
+			db.insert(DatabaseHelper.BILL_TABLE, null, content);	
 		} 
 		catch (SQLException e) {
-			Log.w("Error cadding bill", e);
+			Log.w("Error adding bill", e);
 		}
 		finally{
 			db.close();
@@ -116,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		ContentValues content = new ContentValues();
 		
 		try {
-			cursor = db.rawQuery(DatabaseScripts.editBill, null);
+			cursor = db.update(DatabaseScripts.editBill, null);
 		} 
 		catch (SQLException e) {
 			Log.w("Error editing bill", e);
@@ -156,7 +175,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		}
 		
 		if(cursor != null && cursor.moveToFirst()){
+			int nameIndex = 0;
+			int amountIndex = 0;
+			int categoryIndex = 0;
+			int dateIndex = 0;
+			int idIndex = 0;
+			int recurrenceIndex = 0;
 			
+			
+			
+			do {
+				try {
+					Bill b = new Bill(); // can use other constructor
+
+					b.setAmount(cursor.getInt(amountIndex));
+					b.setCategory(cursor.getString(categoryIndex));
+				
+				
+				
+					// FIXME sqlite
+					String date = cursor.getString(dateIndex);
+					
+					b.setDate(new Date(Long.parseLong(date)));
+
+					b.setId(cursor.getInt(idIndex));
+					b.setName(cursor.getString(nameIndex));
+					b.setRecurrence(cursor.getString(recurrenceIndex));
+					
+					allBills.add(b);
+				} catch (SQLException e) {
+					Log.w("Error assigning bill fields", e);
+				}
+			} while (cursor.moveToNext());
 		}
 	}
 	

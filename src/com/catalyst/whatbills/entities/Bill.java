@@ -3,11 +3,13 @@ package com.catalyst.whatbills.entities;
 import java.util.Date;
 
 public class Bill {
+	private int billId;
 	private String billName;
 	private double amount;
 	private Date dueDate; //TODO look into android/sqlite date objects
 	private String recurrence;
 	private String category;
+	
 	
 	public Bill(){
 		
@@ -20,6 +22,14 @@ public class Bill {
 		this.dueDate = date;
 		this.recurrence = recurrence;
 		this.category = category;
+	}
+	
+	public int getId(){
+		return this.billId;
+	}
+	
+	public void setId(int id){
+		this.billId = id;
 	}
 	
 	public String getName(){
