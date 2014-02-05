@@ -13,4 +13,5 @@
 	<string name="form_duedate">Due Date</string>
 	<string name="form_recurrence">Recurrence</string>
 	<string name="submit">Submit Bill</string>
+	<string name="category">Category</string>
 </resources>

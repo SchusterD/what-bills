@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String BILL_ID = "bill_id";
 	private static final String BILL_NAME = "bill_name";
 	private static final String BILL_AMOUNT = "bill_amount";
-	private static final String BILL_CATEGORY = "bill_category";
+	private static final String BILL_CATEGORY = "bill_category_text";
 	private static final String BILL_RECURRENCE = "bill_recurrence";
 	private static final String BILL_DUEDATE = "bill_duedate";
 	
@@ -51,7 +51,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		//create db and its tables
 		try{
-			db.execSQL(DatabaseScripts.createTables);
+			db.execSQL(DatabaseScripts.createCategoriesTable);
+			db.execSQL(DatabaseScripts.createBillsTable);
+			db.execSQL(DatabaseScripts.populateCategories);
 			
 			//TODO may need additional statements once we
 			//decide what should be in the db
@@ -115,7 +117,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			
 			content.put(BILL_NAME, b.getName());
 			content.put(BILL_AMOUNT, b.getAmount());
+			
+			//FIXME 
 			content.put(BILL_CATEGORY, b.getCategory());
+			
+			
 			content.put(BILL_DUEDATE, date);
 			content.put(BILL_RECURRENCE, b.getRecurrence());
 			content.put(BILL_ID, b.getId());

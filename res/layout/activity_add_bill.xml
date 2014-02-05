@@ -7,11 +7,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AddBillActivity" >
-    
+
     <TableRow
         android:id="@+id/tableRow1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -30,64 +31,81 @@
         </EditText>
     </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow2"
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-            <TextView 
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:text="@string/amount"/>
-            <EditText
-               	android:id="@+id/form_amount_edittext"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:ems="10" >
+            android:layout_height="wrap_content"
+            android:text="@string/amount" />
 
-            	<requestFocus />
-        	</EditText> 
-        </TableRow>
+        <EditText
+            android:id="@+id/form_amount_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10" >
 
+            <requestFocus />
+        </EditText>
+    </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <TextView
-	            android:id="@+id/textView3"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/form_duedate"/>
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-            <DatePicker
-                android:id="@+id/datePicker1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            
-        </TableRow>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/form_duedate" />
 
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+        <DatePicker
+            android:id="@+id/datePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:text="@string/form_recurrence"/>
-            
-            <Spinner
-	            android:id="@+id/spinner1"
-	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"/>
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        </TableRow>
-        
-        <Button
-            android:id="@+id/form_submitbutton"
-            android:layout_gravity="center_horizontal"
-        	android:text="@string/submit" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/form_recurrence" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/form_submitbutton"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/submit" />
+
 </TableLayout>
-
