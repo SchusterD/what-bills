@@ -1,6 +1,10 @@
-package com.catalyst.utilites;
+package com.catalyst.whatbills.utilites;
 
-import com.catalyst.sql.DatabaseScripts;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.catalyst.whatbills.entities.Bill;
+import com.catalyst.whatbills.sql.DatabaseScripts;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -139,6 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	public void getAllBills(){
 		SQLiteDatabase db = getReadableDatabase();
+		List<Bill> allBills = new ArrayList<Bill>();
 		
 		try{
 			cursor = db.rawQuery(DatabaseScripts.getAllBills, null);

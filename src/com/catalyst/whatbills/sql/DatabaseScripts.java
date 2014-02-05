@@ -1,4 +1,4 @@
-package com.catalyst.sql;
+package com.catalyst.whatbills.sql;
 
 public class DatabaseScripts {
 	

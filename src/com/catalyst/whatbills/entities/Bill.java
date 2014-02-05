@@ -1,4 +1,4 @@
-package com.catalyst.entities;
+package com.catalyst.whatbills.entities;
 
 import java.util.Date;
 
