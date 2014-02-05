@@ -5,6 +5,12 @@
     <string name="action_settings">Settings</string>
     <string name="welcome_message">Welcome to Bill Reminder App</string>
     <string name="title_activity_add_bill">AddBillActivity</string>
-    <string name="hello_world">Hello world!</string>
+    
+    
 	<string name="addBillButtonText">Add a Bill</string>
+	<string name="billname">Bill Name</string>
+	<string name="amount">Amount</string>
+	<string name="form_duedate">Due Date</string>
+	<string name="form_recurrence">Recurrence</string>
+	<string name="submit">Submit Bill</string>
 </resources>
