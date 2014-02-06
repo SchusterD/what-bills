@@ -13,7 +13,7 @@ public class DatabaseScripts {
 	public static final String populateCategories = "INSERT INTO categories(category_text) "
 			+ "VALUES ('Utility'), ('Credit Card'), ('Medical Expense'), ('Transportation'),"
 			+ " ('Housing'), ('Other')";
-	
+	public static final String getAllCategories = "SELECT * FROM categories";
 	
 	//may not need these
 	public static final String addBill = "";
