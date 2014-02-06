@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String BILL_ID = "bill_id";
 	private static final String BILL_NAME = "bill_name";
 	private static final String BILL_AMOUNT = "bill_amount";
-	private static final String BILL_CATEGORY = "bill_category_text";
+	private static final String BILL_CATEGORY = "bill_category_id";
 	private static final String BILL_RECURRENCE = "bill_recurrence";
 	private static final String BILL_DUEDATE = "bill_duedate";
 	

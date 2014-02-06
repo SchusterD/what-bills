@@ -4,7 +4,7 @@ public class DatabaseScripts {
 	
 	public static final String createBillsTable = "CREATE TABLE bills "
 			+ "(bill_id integer primary key autoincrement, "
-			+ "bill_amount real, foreign key (bill_category_text) references categories (category_text), "
+			+ "bill_amount real, foreign key (bill_category_id) references categories (category_id), "
 			+ "bill_duedate text, bill_name text, bill_recurrence text)";
 	public static final String createCategoriesTable = "CREATE TABLE categories "
 			+ "(category_id integer primary key autoincrement, "
