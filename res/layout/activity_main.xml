@@ -36,7 +36,8 @@
         android:layout_above="@+id/viewBill"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
-        android:text="@string/addButton" />
+        android:text="@string/addButton" 
+        android:onClick="goToAddBill"/>
 
     <Button
         android:id="@+id/viewBill"
