@@ -10,10 +10,14 @@ public class DatabaseScripts {
 			+ "(category_id integer primary key autoincrement, "
 			+ "category_text text unique)";
 	
-	public static final String populateCategories = "INSERT INTO categories(category_text) "
-			+ "VALUES ('Utility'), ('Credit Card'), ('Medical Expense'), ('Transportation'),"
-			+ " ('Housing'), ('Other')";
+	/*public static final String populateCategories = "INSERT INTO categories (category_text) "
+			+ "VALUES (`Utility`), ('Credit Card'), ('Medical Expense'), ('Transportation'),"
+			+ " ('Housing'), ('Other')";*/
+	public static final String populateCategories = 
+			"INSERT INTO categories (category_text) VALUES (\"Utility\");"; //try it with an escape...
+	
 	public static final String getAllCategories = "SELECT * FROM categories";
+	public static final String getAllCategoriesText = "SELECT category_text FROM categories";
 	
 	//may not need these
 	public static final String addBill = "";

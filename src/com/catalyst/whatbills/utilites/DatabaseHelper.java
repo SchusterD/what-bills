@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.catalyst.whatbills.entities.Bill;
+import com.catalyst.whatbills.entities.Category;
 import com.catalyst.whatbills.sql.DatabaseScripts;
 
 import android.content.ContentValues;
@@ -53,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		try{
 			db.execSQL(DatabaseScripts.createCategoriesTable);
 			db.execSQL(DatabaseScripts.createBillsTable);
-			db.execSQL(DatabaseScripts.populateCategories);
+			db.rawQuery(DatabaseScripts.populateCategories, null);
 			
 			//TODO may need additional statements once we
 			//decide what should be in the db
@@ -248,5 +249,99 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			db.close();
 		}
 	}
+	
+	/*public List<Category> getAllCategories(){
+		List<Category> allCategories = new ArrayList<Category>();
+		SQLiteDatabase db = getReadableDatabase();
+		
+		try{
+			cursor = db.rawQuery(DatabaseScripts.getAllCategories, null);
+			
+			int idIndex = 0;
+			int textIndex = 0;
+			
+			do {
+				if (cursor != null && cursor.moveToFirst()) {
+					Category c = new Category(cursor.getInt(idIndex),
+							cursor.getString(textIndex));
 
+					allCategories.add(c);
+				}
+			} while (cursor.moveToNext());
+			
+		}
+		catch(SQLException e){
+			Log.w("Error retrieving all categories", e);
+		}
+		finally{
+			db.close();
+		}
+
+		return allCategories;
+	}*/
+	
+	public Cursor getAllCategories(){
+		List<Category> allCategories = new ArrayList<Category>();
+		SQLiteDatabase db = getReadableDatabase();
+		
+		cursor = null;
+		
+		try{
+			cursor = db.rawQuery(DatabaseScripts.getAllCategories, null);
+		}
+		catch(SQLException e){
+			Log.w("Error retrieving all categories", e);
+		}
+		finally{
+			db.close();
+		}
+
+		return cursor;
+	}
+	
+	/*public List<String> getAllCategoriesText(){
+		List<String> allCategoriesText = new ArrayList<String>();
+		SQLiteDatabase db = getReadableDatabase();
+		
+		try{
+			cursor = db.rawQuery(DatabaseScripts.getAllCategoriesText, null);
+
+			int textIndex = 0;
+			
+			do {
+				if (cursor != null && cursor.moveToFirst()) {
+					String s = cursor.getString(textIndex);
+
+					allCategoriesText.add(s);
+				}
+			} while (cursor.moveToNext());
+			
+		}
+		catch(SQLException e){
+			Log.w("Error retrieving all category text", e);
+		}
+		finally{
+			db.close();
+		}
+
+		return allCategoriesText;
+	}*/
+	
+	/*public Cursor getAllCategoriesText(){
+		List<String> allCategoriesText = new ArrayList<String>();
+		SQLiteDatabase db = getReadableDatabase();
+		cursor = null;
+		
+		try{
+			cursor = db.rawQuery(DatabaseScripts.getAllCategoriesText, null);	
+		}
+		catch(SQLException e){
+			Log.w("Error retrieving all category text", e);
+		}
+		finally{
+			db.close();
+		}
+
+		return cursor;
+	}*/
 }

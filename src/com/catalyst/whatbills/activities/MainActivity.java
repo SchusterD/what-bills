@@ -101,5 +101,7 @@ public class MainActivity extends Activity {
 		Intent i = new Intent(this, AddBillActivity.class);
 		startActivity(i);
 	}
+	
+	
 
 }
