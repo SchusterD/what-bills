@@ -2,13 +2,8 @@ package com.catalyst.whatbills.activities;
 
 import java.util.Date;
 
-import com.catalyst.whatbills.R;
-import com.catalyst.whatbills.entities.Bill;
-import com.catalyst.whatbills.utilites.DatabaseHelper;
-import com.catalyst.whatbills.utilites.FormValidator;
-
 import android.os.Bundle;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -17,7 +12,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class AddBillActivity extends Activity {
+import com.catalyst.whatbills.R;
+import com.catalyst.whatbills.entities.Bill;
+import com.catalyst.whatbills.utilites.DatabaseHelper;
+import com.catalyst.whatbills.utilites.FormValidator;
+
+public class AddBillActivity extends FragmentActivity {
 	private DatabaseHelper db = DatabaseHelper.getDatabase(this);
 	
 	private EditText billName;
@@ -61,8 +61,6 @@ public class AddBillActivity extends Activity {
 				finish();
 			}
 		});
-		
-		
 	}
 
 	@Override
