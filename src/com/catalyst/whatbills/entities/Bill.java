@@ -12,6 +12,11 @@ public class Bill {
 	
 	
 	public Bill(){
+		billName = null;
+		amount = 0.0;
+		dueDate = null;
+		recurrence = null;
+		category = null;
 		
 	}
 	

@@ -9,10 +9,10 @@
 	<string name="addBillButtonText">Add a Bill</string>
 	<string name="billname">Bill Name</string>
 	<string name="amount">Amount</string>
-	<string name="form_duedate">Due Date</string>
-	<string name="form_recurrence">Recurrence</string>
+	<!--  <string name="form_duedate">Due Date</string>
+	<string name="form_recurrence">Recurrence</string> -->
 	<string name="submit">Submit Bill</string>
-	<string name="category">Category</string>
+<!-- 	<string name="category">Category</string> -->
 
     
     <!-- Home Screen -->

@@ -33,9 +33,9 @@ public class AddBillActivity extends Activity {
 	
 	private EditText billName;
 	private EditText billAmount;
-	/*private DatePicker datepicker;
+	private DatePicker datepicker;
 	private Spinner recurrence;
-	private Spinner category;*/
+	private Spinner category;
 	private Button submitButton;
 
 	@Override
@@ -45,6 +45,12 @@ public class AddBillActivity extends Activity {
 				
 		billName = (EditText)findViewById(R.id.form_billname_edittext);
 		billAmount = (EditText)findViewById(R.id.form_amount_edittext);
+		datepicker = (DatePicker)findViewById(R.id.datePicker1);
+		recurrence = null;/*(Spinner)findViewById(R.id.spinner1);*/
+		category = (Spinner)findViewById(R.id.spinner2);
+		
+		ArrayAdapter<CharSequence> adapter = setupCategorySpinner();
+		category.setAdapter((SpinnerAdapter) adapter);
 		
 		submitButton = (Button)findViewById(R.id.form_submitbutton);
 		
@@ -53,11 +59,18 @@ public class AddBillActivity extends Activity {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
-				boolean allFilled = FormValidator.validate(billName.getText().toString(), billAmount.getText().toString());
+				// TODO Auto-generated method stub
+				boolean allFilled = FormValidator.validate(billName.getText().toString(), billAmount.getText().toString(), 
+						null, 
+						new Date(datepicker.getYear() - 1900, datepicker.getMonth(), datepicker.getDayOfMonth()).toString(), 
+						null);
 				Log.w("Form valid:", String.valueOf(allFilled));
 				
 				if(allFilled == true){
-					saveBill(billName.getText().toString(), billAmount.getText().toString());
+					saveBill(billName.getText().toString(), billAmount.getText().toString(), 
+							/*category.getSelectedItem().toString()*/ null, 
+							new Date(datepicker.getYear() - 1900, datepicker.getMonth(), datepicker.getDayOfMonth()).toString(), 
+							/*recurrence.getSelectedItem().toString()*/ null);
 				}
 				
 				finish();
@@ -74,14 +87,43 @@ public class AddBillActivity extends Activity {
 		return true;
 	}
 	
-	public void saveBill(String name, String amt){
+	public void saveBill(String name, String amt, String category,
+			String date, String rec){
 		
-		Bill b = new Bill(); //call default constructor will all set to null
+		Bill b = new Bill();
 		
 		b.setName(name);
 		b.setAmount(Double.parseDouble(amt));
+		b.setCategory(category);
+		b.setRecurrence(rec);
+		b.setDate(new Date(date));
 		
 		db.addBill(b);
+	}
+	
+	public ArrayAdapter<CharSequence> setupCategorySpinner(){
+		//ArrayAdapter categories = ArrayAdapter.createFromResource(this, textArrayResId, textViewResId)
+		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 0, null);
+		ArrayAdapter <CharSequence> adapter = null;
+		
+		try {
+			Cursor c = db.getAllCategories();
+			
+			int categoryTextIndex = c.getColumnIndex("category_text");
+			
+			adapter = new ArrayAdapter<CharSequence>(this, 
+							android.R.layout.simple_spinner_item );
+			
+			if(c != null && c.moveToFirst()){
+				do{
+					adapter.add(c.getString(categoryTextIndex)); 
+				}while(c.moveToNext());
+			}
+		} catch (SQLException e) {
+			Log.w("Error setting up category spinner", e);
+		}
+		
+		return adapter;
 	}
 
 }

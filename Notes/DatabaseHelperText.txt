@@ -114,17 +114,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		ContentValues content = new ContentValues();
 		
 		try {
-			//String date = Long.toString(b.getDate().getTime());
+			String date = Long.toString(b.getDate().getTime());
 			
 			content.put(BILL_NAME, b.getName());
 			content.put(BILL_AMOUNT, b.getAmount());
 			
 			//FIXME 
-			content.put(BILL_CATEGORY, "");
+			content.put(BILL_CATEGORY, b.getCategory());
 			
 			
-			content.put(BILL_DUEDATE, "");
-			content.put(BILL_RECURRENCE, "");
+			content.put(BILL_DUEDATE, date);
+			content.put(BILL_RECURRENCE, b.getRecurrence());
+			content.put(BILL_ID, b.getId());
 			
 			db.insert(DatabaseHelper.BILL_TABLE, null, content);	
 		} 
