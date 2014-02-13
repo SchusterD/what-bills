@@ -2,11 +2,11 @@ package com.catalyst.whatbills.activities;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
@@ -21,7 +21,7 @@ import com.catalyst.whatbills.models.NavDrawerListAdapter;
 import com.catalyst.whatbills.viewFragments.AddBillFragment;
 import com.catalyst.whatbills.viewFragments.HomeScreenFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
 	
 	private String[] mDrawerListTitles;
 	private DrawerLayout mDrawerLayout;
@@ -29,7 +29,7 @@ public class MainActivity extends FragmentActivity {
 	private ActionBarDrawerToggle mDrawerToggle;
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-	private FragmentTransaction fragmentManager;
+	private FragmentTransaction fragmentTransaction;
 	
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
@@ -115,14 +115,6 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	//Function for Add Bill button on Home Screen Fragment
-	public void goToAddBill(View v) {
-		
-		fragmentManager = getSupportFragmentManager().beginTransaction();
-		fragmentManager.replace(R.id.content_frame, Fragment.instantiate(MainActivity.this, AddBillFragment.class.getName()));
-        fragmentManager.commit();
-	}
-	
 	/**
 	 * Diplaying fragment view for selected nav drawer list item
 	 * */
@@ -142,8 +134,10 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		if (fragment != null) {
-			FragmentTransaction fragmentManager = getSupportFragmentManager().beginTransaction();
-			fragmentManager.replace(R.id.content_frame, fragment).commit();
+			fragmentTransaction = getFragmentManager().beginTransaction();
+			
+			fragmentTransaction.addToBackStack(null); //Add the current Fragment to the stack (allows for Back navigation)
+			fragmentTransaction.replace(R.id.content_frame, fragment).commit();
 
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
