@@ -3,42 +3,16 @@
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_message" />
   
     <CalendarView
-        android:id="@+id/calendarView1"
+        android:id="@+id/homeCalendar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/addBill"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/titleText"
         android:maxDate="12/31/2064"
         android:minDate="01/01/2014"
         android:showWeekNumber="false"
         android:shownWeekCount="@integer/Five"
         android:dateTextAppearance="@android:style/TextAppearance.Large" />
     
-    <Button
-        android:id="@+id/addBill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/viewBill"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/addButton" 
-        android:onClick="goToAddBill"/>
-
-    <Button
-        android:id="@+id/viewBill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
-        android:text="@string/viewButton" />
     </RelativeLayout>
